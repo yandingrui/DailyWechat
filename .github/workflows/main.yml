@@ -21,6 +21,7 @@ jobs:
         python-version: '3.x'
         architecture: 'x64'
     - run: pip install urllib3
+    - run: pip install urlopen
     - run: pip install -r ./requirements.txt && python ./main.py
 
     env:
