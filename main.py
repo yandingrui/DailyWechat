@@ -20,9 +20,13 @@ def get_time():
 
 def get_words():
     words = requests.get("https://api.shadiao.pro/chp")
+    words.encoding = 'utf-8'
     if words.status_code != 200:
         return get_words()
-    return words.json()['data']['text']
+    print(words.json())
+    print(words.json()['data'])
+    print(words.json()['data']['text'])
+    return 
 
 def get_weather(city, key):
     url = f"https://api.seniverse.com/v3/weather/daily.json?key={key}&location={city}&language=zh-Hans&unit=c&start=-1&days=5"
