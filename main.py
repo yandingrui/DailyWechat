@@ -1,10 +1,11 @@
 from wechatpy import WeChatClient
-from wechatpy.client.api import WeChatMessage
 import os
 import json
 from datetime import datetime, timedelta
-import random
 import requests
+import math
+from wechatpy.client.api import WeChatMessage, WeChatTemplate
+import random
 
 nowtime = datetime.utcnow() + timedelta(hours=8)
 today = datetime.strptime(str(nowtime.date()), "%Y-%m-%d")
