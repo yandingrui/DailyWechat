@@ -23,10 +23,7 @@ def get_words():
     words.encoding = 'utf-8'
     if words.status_code != 200:
         return get_words()
-    print(words.json())
-    print(words.json()['data'])
-    print(words.json()['data']['text'])
-    return 
+    return words.json()['data']['text']
 
 def get_weather(city, key):
     url = f"https://api.seniverse.com/v3/weather/daily.json?key={key}&location={city}&language=zh-Hans&unit=c&start=-1&days=5"
@@ -87,7 +84,7 @@ if __name__ == '__main__':
         data['birthday_left'] = {'value': get_birthday(birthday)}
         data['wind'] = {'value': weather['wind_direction']}
         data['name'] = {'value': name}
-
+        print(data)
         res = wm.send_template(user_id, template_id, data)
         print(res)
         num += 1
