@@ -45,7 +45,31 @@ def get_birthday(birthday):
     if nextdate < today:
         nextdate = nextdate.replace(year=nextdate.year + 1)
     return (nextdate - today).days
-
+    
+def split_and_assign_text():
+    try:
+        # 获取文本
+        text = get_words()
+        if not text:
+            return '', '', '', ''
+            
+        # 计算需要分割的次数
+        total_length = len(text)
+        chunk_size = 22
+        
+        # 分割前三个部分
+        words = text[:chunk_size] if total_length > 0 else ''
+        words1 = text[chunk_size:chunk_size*2] if total_length > chunk_size else ''
+        words2 = text[chunk_size*2:chunk_size*3] if total_length > chunk_size*2 else ''
+        
+        # 将剩余部分合并到words3
+        words3 = text[chunk_size*3:] if total_length > chunk_size*3 else ''
+        
+        return word, word1, word2, word3
+        
+    except Exception as e:
+        print(f"Error occurred: {e}")
+        return '', '', '', ''
 
 if __name__ == '__main__':
     app_id = os.getenv("APP_ID")
@@ -61,7 +85,8 @@ if __name__ == '__main__':
     f.close()
     data = js_text['data']
     num = 0
-    words=get_words()
+    # words=get_words()
+    words, words1, words2, words3 = split_and_assign_text()
     out_time=get_time()
 
     print(words, out_time)
@@ -78,6 +103,9 @@ if __name__ == '__main__':
         data = dict()
         data['time'] = {'value': out_time}
         data['words'] = {'value': words}
+        data['words1'] = {'value': words1}
+        data['words2'] = {'value': words2}
+        data['words3'] = {'value': words3}
         data['weather'] = {'value': weather['text_day']}
         data['city'] = {'value': wea_city}
         data['tem_high'] = {'value': weather['high']}
