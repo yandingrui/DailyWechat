@@ -85,8 +85,8 @@ if __name__ == '__main__':
     f.close()
     data = js_text['data']
     num = 0
-    # words=get_words()
-    words, words1, words2, words3 = split_and_assign_text()
+    words=get_words()
+    #words, words1, words2, words3 = split_and_assign_text()
     out_time=get_time()
 
     print(words, out_time)
