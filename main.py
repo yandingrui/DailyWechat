@@ -103,9 +103,9 @@ if __name__ == '__main__':
         data = dict()
         data['time'] = {'value': out_time}
         data['words'] = {'value': words}
-        data['words1'] = {'value': words1}
-        data['words2'] = {'value': words2}
-        data['words3'] = {'value': words3}
+        # data['words1'] = {'value': words1}
+        # data['words2'] = {'value': words2}
+        # data['words3'] = {'value': words3}
         data['weather'] = {'value': weather['text_day']}
         data['city'] = {'value': wea_city}
         data['tem_high'] = {'value': weather['high']}
